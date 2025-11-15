@@ -1,0 +1,25 @@
+{
+  "name": "minecraft-whitelist-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for Minecraft server whitelist management",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "start:bridge": "node minecraft_bridge.js",
+    "start:all": "concurrently \"npm run start\" \"npm run start:bridge\"",
+    "dev": "nodemon bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.24.2",
+    "dotenv": "^17.2.3",
+    "rcon-client": "^4.2.5",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "concurrently": "^9.2.1"
+  },
+  "keywords": ["discord", "minecraft", "whitelist", "bot"],
+  "author": "WinniePatGG",
+  "license": "MIT"
+}
