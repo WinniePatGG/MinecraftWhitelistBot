@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, Events, EmbedBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require('discord.js');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-require('dotenv').config({ quiet: true });
+require('dotenv').config({ quiet: true, path: path.join(__dirname, '.env') });
 
 const client = new Client({
     intents: [
