@@ -1,0 +1,72 @@
+services:
+  minecraft-whitelist-bot:
+    image: node:18-alpine
+    container_name: minecraft-whitelist-bot
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./app:/app
+      - bot-data:/app/data
+      - bot-logs:/app/logs
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    command: >
+      sh -c "
+        npm install &&
+        node bot.js
+      "
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=false"
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:${PORT:-3000}', (res) => { if (res.statusCode !== 200) throw new Error() })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  minecraft-bridge:
+    image: node:18-alpine
+    container_name: minecraft-whitelist-bridge
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./app:/app
+      - bot-data:/app/data
+      - bot-logs:/app/logs
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    command: >
+      sh -c "
+        npm install &&
+        node minecraft_bridge.js
+      "
+    depends_on:
+      - minecraft-whitelist-bot
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=false"
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+
+volumes:
+  bot-data:
+    driver: local
+  bot-logs:
+    driver: local
+
+networks:
+  default:
+    name: minecraft-whitelist-network

@@ -10,14 +10,22 @@
 - RCON_PASSWORD = Password for rcon (also set in the server.properties)
 
 ### Files
-- The **bot.js** is the main file that saves the discord_id, discord_username, minecraft_username, status, minecraft_added and created_at. Embeds and other stuff are also managed here.
-- The **minecraft_bridge.js** is the file that manages the requests to the minecraft rcon server.
+- The `bot.js` is the main file that saves the discord_id, discord_username, minecraft_username, status, minecraft_added and created_at. Embeds and other stuff are also managed here.
+- The `minecraft_bridge.js` is the file that manages the requests to the minecraft rcon server.
 
 ### Getting Started
 - Clone the Repo
 - Set the values in the .env file
 - Run `npm install`
 - Run `npm run start:all`
+
+### To run in Docker Containers
+- Create a folder on your server `mkdir MinecraftWhitelistBot`
+- Inside that folder create a new folder called `app` (`mkdir app`)
+- Copy the `docker-compose.yml` from the Repo into the `MinecraftWhitelistBot` folder
+- Create a `.env` file and set the Values as shown above
+- Copy the rest of the files (`bot.js`, `minecraft_bridge.js` and `package.json`) into the `app` folder
+- Start the Services inside the command with the compose file with the command `docker compose up -d`
 
 ### Common issues
 - If you start, and you get the error, that the database table is not found. Just restart the `npm run start:all` command. This should fix this error.
