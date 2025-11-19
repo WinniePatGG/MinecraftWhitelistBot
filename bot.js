@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, Events, EmbedBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require('discord.js');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const { startPingLoop } = require('./PingTask');
 require('dotenv').config({ quiet: true, path: path.join(__dirname, '.env') });
 
 const client = new Client({
@@ -684,6 +685,12 @@ client.once(Events.ClientReady, async () => {
     console.log(`🔧 Admin channel: ${process.env.ADMIN_REVIEW_CHANNEL_ID}`);
     console.log('');
     await registerCommands();
+    if (process.env.PING_ENABLED === 'false') {
+        startPingLoop();
+        console.log('[PING] enabled.')
+    } else {
+        console.log('[PING] disabled.')
+    }
 });
 
 client.login(process.env.DISCORD_TOKEN);

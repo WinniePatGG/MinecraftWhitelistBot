@@ -8,6 +8,8 @@
 - RCON_HOST = Ip Address of the Minecraft Server
 - RCON_PORT = Port of the Rcon Service (set in the server.properties file, also enable rcon here)
 - RCON_PASSWORD = Password for rcon (also set in the server.properties)
+- PING_ENABLED = Do you want to send a api request to some endpoint (like uptime kuma)
+- PING_DOMAIN = URL to the api endpoint
 
 ### Files
 - The `bot.js` is the main file that saves the discord_id, discord_username, minecraft_username, status, minecraft_added and created_at. Embeds and other stuff are also managed here.
