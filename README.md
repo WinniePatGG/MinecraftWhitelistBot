@@ -20,6 +20,8 @@
 - Set the values in the .env file
 - Run `npm install`
 - Run `npm run start:all`
+- In you public channel run `/whitelist` and select the command of your bot
+- Done
 
 ### To run in Docker Containers
 - Create a folder on your server `mkdir MinecraftWhitelistBot`
