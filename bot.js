@@ -1,4 +1,17 @@
-const { Client, GatewayIntentBits, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, Events, EmbedBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require('discord.js');
+const {
+    Client,
+    GatewayIntentBits,
+    ActionRowBuilder,
+    ModalBuilder,
+    TextInputBuilder,
+    TextInputStyle,
+    Events,
+    EmbedBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    PermissionsBitField
+} = require('discord.js');
+
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const { startPingLoop } = require('./PingTask');
@@ -225,13 +238,12 @@ async function handleWhitelistSubmission(interaction) {
         const adminChannel = await client.channels.fetch(process.env.ADMIN_REVIEW_CHANNEL_ID);
         if (adminChannel) {
             const adminEmbed = new EmbedBuilder()
-                .setTitle(`🆕 New Whitelist Request`)
+                .setTitle('🆕 New Whitelist Request')
                 .setColor(0xFFFF00)
                 .addFields(
                     { name: 'Discord User', value: `${discordUser.tag} (\`${discordUser.id}\`)`, inline: true },
                     { name: 'Minecraft Username', value: `\`${minecraftUsername}\``, inline: true },
-                    { name: 'Status', value: '⏳ Pending', inline: true },
-                    { name: 'Request ID', value: `#${(await dbGet('SELECT last_insert_rowid() as id')).id}`, inline: true }
+                    { name: 'Status', value: '⏳ Pending', inline: true }
                 )
                 .setThumbnail(discordUser.displayAvatarURL())
                 .setTimestamp();
@@ -241,16 +253,16 @@ async function handleWhitelistSubmission(interaction) {
                     new ButtonBuilder()
                         .setCustomId(`approve_${discordUser.id}_${minecraftUsername}`)
                         .setLabel('Approve')
-                        .setStyle(ButtonStyle.success)
+                        .setStyle(3)
                         .setEmoji('✅'),
                     new ButtonBuilder()
                         .setCustomId(`deny_${discordUser.id}_${minecraftUsername}`)
                         .setLabel('Deny')
-                        .setStyle(ButtonStyle.Danger)
+                        .setStyle(4)
                         .setEmoji('❌')
                 );
 
-            await adminChannel.send({content: `<@&${process.env.TEAM_ROLE_ID}>`, embeds: [adminEmbed], components: [adminRow] });
+            await adminChannel.send({ embeds: [adminEmbed], components: [adminRow] });
         }
 
         await interaction.reply({
@@ -685,7 +697,7 @@ client.once(Events.ClientReady, async () => {
     console.log(`🔧 Admin channel: ${process.env.ADMIN_REVIEW_CHANNEL_ID}`);
     console.log('');
     await registerCommands();
-    if (process.env.PING_ENABLED === 'false') {
+    if (process.env.PING_ENABLED === 'true') {
         startPingLoop();
         console.log('[PING] enabled.')
     } else {

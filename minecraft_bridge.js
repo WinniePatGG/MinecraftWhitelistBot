@@ -3,6 +3,13 @@ const sqlite3 = require('sqlite3');
 const path = require('path');
 require('dotenv').config({ quiet: true });
 
+console.log('🔗 Starting Minecraft Bridge...');
+console.log('RCON Config:', {
+    host: process.env.RCON_HOST || 'NOT SET',
+    port: process.env.RCON_PORT || '25575',
+    hasPassword: !!process.env.RCON_PASSWORD
+});
+
 const dbPath = path.join(__dirname, 'whitelist.db');
 const db = new sqlite3.Database(dbPath);
 
@@ -70,4 +77,7 @@ setInterval(processApprovedUsers, 1000);
 
 processApprovedUsers();
 
-console.log('Minecraft bridge started...');
+console.log("")
+console.log(`Started Minecraft Bridge successfully!`);
+console.log(`Waiting for changes in whitelist.db`);
+console.log("")
