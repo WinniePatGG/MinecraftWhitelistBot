@@ -262,7 +262,7 @@ async function handleWhitelistSubmission(interaction) {
                         .setEmoji('❌')
                 );
 
-            await adminChannel.send({ embeds: [adminEmbed], components: [adminRow] });
+            await adminChannel.send({content: `<@&${process.env.TEAM_ROLE_ID}>`, embeds: [adminEmbed], components: [adminRow] });
         }
 
         await interaction.reply({
