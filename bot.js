@@ -14,7 +14,7 @@ const {
 
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const { startPingLoop } = require('./PingTask');
+const { startPingLoop } = require('./pingTask');
 require('dotenv').config({ quiet: true, path: path.join(__dirname, '.env') });
 
 const client = new Client({
@@ -340,12 +340,6 @@ async function handleApproveButton(interaction) {
             await user.send({ embeds: [notifyEmbed] });
         } catch (dmError) {
             console.log('Could not send DM to user');
-            const publicChannel = await client.channels.fetch(process.env.PUBLIC_CHANNEL_ID);
-            if (publicChannel) {
-                await publicChannel.send({
-                    content: `🎉 <@${discordId}> Your whitelist request for **${minecraftUsername}** has been approved! You can now join the server.`
-                });
-            }
         }
 
     } catch (error) {

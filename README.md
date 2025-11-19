@@ -14,6 +14,7 @@
 ### Files
 - The `bot.js` is the main file that saves the discord_id, discord_username, minecraft_username, status, minecraft_added and created_at. Embeds and other stuff are also managed here.
 - The `minecraft_bridge.js` is the file that manages the requests to the minecraft rcon server.
+- The `pingTask.js` is the manager for pinging the api endpoint. If you disabled this in the `.env` this won't be used
 
 ### Getting Started
 - Clone the Repo
@@ -28,7 +29,11 @@
 - Inside that folder create a new folder called `app` (`mkdir app`)
 - Copy the `docker-compose.yml` from the Repo into the `MinecraftWhitelistBot` folder
 - Create a `.env` file and set the Values as shown above
-- Copy the rest of the files (`bot.js`, `minecraft_bridge.js` and `package.json`) into the `app` folder
+- Copy these files into the `app` folder
+- - `bot.js`
+- - `minecraft_bridge.js`
+- - `pingTask.js`
+- - `package.json`
 - Start the Services inside the command with the compose file with the command `docker compose up -d`
 
 ### Common issues
