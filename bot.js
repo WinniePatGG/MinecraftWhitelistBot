@@ -241,9 +241,15 @@ async function handleWhitelistSubmission(interaction) {
                 .setTitle('🆕 New Whitelist Request')
                 .setColor(0xFFFF00)
                 .addFields(
-                    { name: 'Discord User', value: `${discordUser.tag} (\`${discordUser.id}\`)`, inline: true },
-                    { name: 'Minecraft Username', value: `\`${minecraftUsername}\``, inline: true },
-                    { name: 'Status', value: '⏳ Pending', inline: true }
+                    { name: 'Discord User',
+                        value: `${discordUser.tag} (\`${discordUser.id}\`)`,
+                        inline: true },
+                    { name: 'Minecraft Username',
+                        value: `\`${minecraftUsername}\``,
+                        inline: true },
+                    { name: 'Status',
+                        value: '⏳ Pending',
+                        inline: true }
                 )
                 .setThumbnail(discordUser.displayAvatarURL())
                 .setTimestamp();
@@ -262,7 +268,9 @@ async function handleWhitelistSubmission(interaction) {
                         .setEmoji('❌')
                 );
 
-            await adminChannel.send({content: `<@&${process.env.TEAM_ROLE_ID}>`, embeds: [adminEmbed], components: [adminRow] });
+            await adminChannel.send({content: `<@&${process.env.TEAM_ROLE_ID}>`,
+                embeds: [adminEmbed],
+                components: [adminRow] });
         }
 
         await interaction.reply({
@@ -590,7 +598,8 @@ async function handleStatsCommand(interaction) {
             .setTitle('📊 Whitelist Statistics')
             .setColor(0x0099FF)
             .addFields(
-                { name: '📥 Pending Requests', value: pending.count.toString(), inline: true },
+                { name: '📥 Pending Requests',
+                    value: pending.count.toString(), inline: true },
                 { name: '✅ Approved',
                     value: approved.count.toString(),
                     inline: true },

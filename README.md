@@ -3,6 +3,7 @@
 ### A **Discord.js** bot that handles **Minecraft whitelist requests** with admin review, RCON integration, and optional uptime pings.
 ### Make sure to have NPM installed. If not install on https://nodejs.org/en/download for your os
 ### If you need help: Join my discord Server and send me a dm https://discord.gg/nRgXUFSFfe
+### Also feel free to create issues in the issues tab https://github.com/WinniePatGG/MinecraftWhitelistBot/issues
 
 ------------------------------------------------------------------------
 
@@ -74,8 +75,8 @@ Then run `/whitelist` in your configured Discord channel.
     mkdir MinecraftWhitelistBot/app
 
 Copy: 
-- `docker-compose.yml` → root folder\
-- `.env` → root folder\
+- `docker-compose.yml` → root folder
+- `.env` → root folder
 - All app files → `/app`
 
 Start:
