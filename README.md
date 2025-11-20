@@ -57,8 +57,8 @@ Runs scheduled pings if enabled.
 
 ### Local Setup
 
-    git clone <repo>
-    cd <folder>
+    git clone https://github.com/WinniePatGG/MinecraftWhitelistBot.git
+    cd MinecraftWhitelistBot
     npm install
     npm run start:all
 
