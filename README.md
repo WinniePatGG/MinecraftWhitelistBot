@@ -1,6 +1,8 @@
 # Discord Whitelist Bot
 
-A **Discord.js** bot that handles **Minecraft whitelist requests** with admin review, RCON integration, and optional uptime pings.
+### A **Discord.js** bot that handles **Minecraft whitelist requests** with admin review, RCON integration, and optional uptime pings.
+### Make sure to have NPM installed. If not install on https://nodejs.org/en/download for your os
+### If you need help: Join my discord Server and send me a dm https://discord.gg/nRgXUFSFfe
 
 ------------------------------------------------------------------------
 
@@ -84,9 +86,15 @@ Start:
 
 ## Common Issues
 
-### "Error: SQLITE_ERROR: no such table: whitelist_requests"
+### - Error: SQLITE_ERROR: no such table: whitelist_requests
 
 Restart everything:
+
+    npm run start:all
+
+### - Error [TokenInvalid]: An invalid token was provided.
+
+Set a valid Discord Bot Token in you .env file in the field `DISCORD_TOKEN` and restart
 
     npm run start:all
 
