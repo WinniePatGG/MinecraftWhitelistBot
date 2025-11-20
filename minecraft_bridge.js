@@ -77,7 +77,5 @@ setInterval(processApprovedUsers, 1000);
 
 processApprovedUsers();
 
-console.log("")
-console.log(`Started Minecraft Bridge successfully!`);
+console.log(`✅ Started Minecraft Bridge successfully!`);
 console.log(`Waiting for changes in whitelist.db`);
-console.log("")

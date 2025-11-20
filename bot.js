@@ -51,7 +51,7 @@ function initializeDatabase() {
         if (err) {
             console.error('Error creating table:', err);
         } else {
-            console.log('Database initialization successfully');
+            console.log('Database initialization was successful');
         }
     });
 }
